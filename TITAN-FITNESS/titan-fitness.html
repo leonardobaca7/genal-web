@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Titan Fitness — Convierte tu esfuerzo en resultados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0c0d0e;
+    --steel:#171819;
+    --steel-2:#212224;
+    --line:#3a3b3d;
+    --line-soft:#2a2b2d;
+    --paper:#f4f2ec;
+    --paper-dim:#a9a7a0;
+    --ember:#ff4517;
+    --ember-deep:#c92f0c;
+    --amber:#ffb23d;
+    --radius-s: 2px;
+    --maxw: 1240px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Archivo', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  img, .bg-cover{ display:block; }
+
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; }
+
+  h1,h2,h3,h4{
+    font-family:'Anton', sans-serif;
+    font-weight:400;
+    line-height:0.95;
+    letter-spacing:0.01em;
+  }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  :focus-visible{
+    outline: 3px solid var(--amber);
+    outline-offset: 3px;
+  }
+
+  section{ position:relative; }
+
+  /* ---------- shared bits ---------- */
+
+  .kicker{
+    font-size:0.8rem;
+    font-weight:700;
+    color:var(--ember);
+    letter-spacing:0.02em;
+    margin-bottom:14px;
+  }
+
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:40px;
+    margin-bottom:56px;
+  }
+
+  .section-head h2{
+    font-size:clamp(2.1rem, 4.4vw, 3.4rem);
+  }
+
+  .section-head p{
+    max-width:360px;
+    color:var(--paper-dim);
+    font-size:1rem;
+    padding-bottom:6px;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:16px 32px;
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size:0.95rem;
+    border-radius:var(--radius-s);
+    cursor:pointer;
+    border:2px solid transparent;
+    transition:transform 0.25s cubic-bezier(.2,.8,.2,1), background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    white-space:nowrap;
+  }
+  .btn:active{ transform:scale(0.97); }
+
+  .btn-solid{
+    background:var(--ember);
+    color:#100701;
+  }
+  .btn-solid:hover{ background:var(--amber); transform:translateY(-2px); }
+
+  .btn-outline{
+    background:transparent;
+    border-color:rgba(244,242,236,0.35);
+    color:var(--paper);
+  }
+  .btn-outline:hover{ border-color:var(--paper); transform:translateY(-2px); }
+
+  .btn-block{
+    background:transparent;
+    border-color:var(--line);
+    color:var(--paper);
+    width:100%;
+  }
+  .btn-block:hover{ border-color:var(--ember); color:var(--ember); }
+
+  /* ---------- navbar ---------- */
+
+  header.nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    padding:22px 0;
+    transition:background 0.35s ease, padding 0.35s ease, border-color 0.35s ease;
+    border-bottom:1px solid transparent;
+  }
+  header.nav.solid{
+    background:rgba(12,13,14,0.92);
+    backdrop-filter:blur(10px);
+    padding:14px 0;
+    border-bottom:1px solid var(--line-soft);
+  }
+  header.nav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Anton', sans-serif;
+    font-size:1.5rem;
+    letter-spacing:0.02em;
+  }
+  .logo .bar{
+    width:9px; height:24px;
+    background:var(--ember);
+    transform:skewX(-12deg);
+  }
+  nav.links{
+    display:flex;
+    gap:36px;
+  }
+  nav.links a{
+    font-weight:600;
+    font-size:0.92rem;
+    color:var(--paper-dim);
+    transition:color 0.2s ease;
+    position:relative;
+  }
+  nav.links a:hover{ color:var(--paper); }
+
+  .nav-cta{ display:flex; align-items:center; gap:22px; }
+  .nav-cta .btn{ padding:12px 24px; font-size:0.88rem; }
+
+  .burger{
+    display:none;
+    width:26px; height:20px;
+    position:relative;
+    cursor:pointer;
+    background:none; border:none;
+  }
+  .burger span{
+    position:absolute; left:0; right:0; height:2px; background:var(--paper);
+    transition:transform 0.3s ease, opacity 0.3s ease;
+  }
+  .burger span:nth-child(1){ top:0; }
+  .burger span:nth-child(2){ top:9px; }
+  .burger span:nth-child(3){ top:18px; }
+  .burger.open span:nth-child(1){ transform:translateY(9px) rotate(45deg); }
+  .burger.open span:nth-child(2){ opacity:0; }
+  .burger.open span:nth-child(3){ transform:translateY(-9px) rotate(-45deg); }
+
+  .mobile-panel{
+    display:none;
+    position:fixed;
+    inset:0;
+    top:64px;
+    background:var(--ink);
+    z-index:99;
+    padding:32px;
+    flex-direction:column;
+    gap:26px;
+  }
+  .mobile-panel.open{ display:flex; }
+  .mobile-panel a{ font-family:'Anton'; font-size:1.6rem; }
+
+  /* ---------- hero ---------- */
+
+  .hero{
+    min-height:100vh;
+    display:flex;
+    align-items:flex-end;
+    padding-top:140px;
+    padding-bottom:0;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(180deg, rgba(12,13,14,0.45) 0%, rgba(12,13,14,0.55) 45%, var(--ink) 96%),
+      url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2000&q=80');
+    background-size:cover;
+    background-position:center 30%;
+    background-color:var(--steel);
+    transform:scale(1.08);
+    animation:heroIn 1.6s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  @keyframes heroIn{
+    from{ transform:scale(1.14); filter:saturate(0.6) brightness(0.75); }
+    to{ transform:scale(1.0); filter:saturate(1) brightness(1); }
+  }
+  .hero-slab{
+    position:absolute;
+    right:-10%;
+    top:0; bottom:0;
+    width:60%;
+    background:linear-gradient(100deg, transparent 0%, transparent 38%, var(--ember) 38.4%, var(--ember-deep) 100%);
+    opacity:0.14;
+    transform:skewX(-14deg);
+    pointer-events:none;
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    padding-bottom:110px;
+    width:100%;
+  }
+  .hero-eyebrow{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:var(--paper-dim);
+    font-weight:700;
+    font-size:0.88rem;
+    margin-bottom:26px;
+    opacity:0;
+    animation:riseIn 0.8s 0.5s ease forwards;
+  }
+  .hero-eyebrow .dot{ width:8px; height:8px; background:var(--ember); border-radius:50%; }
+
+  .hero h1{
+    font-size:clamp(2.6rem, 7.4vw, 6.6rem);
+    max-width:16ch;
+    color:var(--paper);
+    opacity:0;
+    animation:riseIn 0.9s 0.65s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  .hero .sub{
+    margin-top:26px;
+    font-size:1.2rem;
+    color:var(--paper-dim);
+    max-width:36ch;
+    font-weight:500;
+    opacity:0;
+    animation:riseIn 0.9s 0.85s ease forwards;
+  }
+  .hero-actions{
+    display:flex;
+    gap:18px;
+    margin-top:42px;
+    flex-wrap:wrap;
+    opacity:0;
+    animation:riseIn 0.9s 1.02s ease forwards;
+  }
+  @keyframes riseIn{
+    from{ opacity:0; transform:translateY(26px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  .stat-strip{
+    position:relative;
+    z-index:2;
+    border-top:1px solid rgba(244,242,236,0.14);
+    margin-top:64px;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    opacity:0;
+    animation:riseIn 0.9s 1.2s ease forwards;
+  }
+  .stat-strip .stat{
+    padding:26px 32px;
+    border-right:1px solid rgba(244,242,236,0.14);
+  }
+  .stat-strip .stat:last-child{ border-right:none; }
+  .stat .num{
+    font-family:'Anton';
+    font-size:2.2rem;
+    color:var(--paper);
+  }
+  .stat .lab{
+    font-size:0.82rem;
+    color:var(--paper-dim);
+    font-weight:600;
+    margin-top:4px;
+  }
+
+  /* ---------- beneficios ---------- */
+
+  .beneficios{
+    padding:150px 0 130px;
+    background:var(--ink);
+  }
+  .beneficios-body{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:60px;
+  }
+  .beneficios-lead h2{
+    font-size:clamp(2.2rem, 4.6vw, 3.6rem);
+  }
+  .beneficios-lead p{
+    color:var(--paper-dim);
+    margin-top:22px;
+    max-width:38ch;
+    font-size:1.05rem;
+  }
+  .beneficios-list{ border-top:1px solid var(--line-soft); }
+  .beneficio-row{
+    display:grid;
+    grid-template-columns:56px 1fr;
+    gap:26px;
+    padding:30px 0;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .beneficio-row .icon{
+    width:44px; height:44px;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--ember);
+  }
+  .beneficio-row .icon svg{ width:100%; height:100%; }
+  .beneficio-row h3{
+    font-family:'Archivo';
+    font-weight:700;
+    font-size:1.15rem;
+    margin-bottom:8px;
+    color:var(--paper);
+  }
+  .beneficio-row p{
+    color:var(--paper-dim);
+    font-size:0.98rem;
+    max-width:52ch;
+  }
+
+  /* ---------- entrenamientos ---------- */
+
+  .entrenamientos{
+    padding:0 0 140px;
+    background:var(--ink);
+  }
+  .filmstrip{
+    display:flex;
+    gap:2px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:thin;
+    padding-bottom:8px;
+  }
+  .filmstrip::-webkit-scrollbar{ height:6px; }
+  .filmstrip::-webkit-scrollbar-thumb{ background:var(--line); }
+
+  .film-card{
+    position:relative;
+    min-width:320px;
+    height:460px;
+    scroll-snap-align:start;
+    flex:1 0 320px;
+    background-size:cover;
+    background-position:center;
+    background-color:var(--steel-2);
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 92% 100%, 0 100%);
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .film-card::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(9,9,10,0.92) 10%, rgba(9,9,10,0.05) 55%);
+    z-index:1;
+  }
+  .film-card .film-txt{
+    position:absolute; left:26px; right:26px; bottom:28px; z-index:2;
+  }
+  .film-card .n{
+    font-size:0.8rem; font-weight:700; color:var(--amber);
+    margin-bottom:8px;
+  }
+  .film-card h3{
+    font-family:'Anton';
+    font-size:1.7rem;
+    color:var(--paper);
+  }
+  .film-card p{
+    color:var(--paper-dim);
+    font-size:0.92rem;
+    margin-top:8px;
+    max-width:30ch;
+  }
+
+  /* ---------- planes ---------- */
+
+  .planes{
+    padding:140px 0;
+    background:var(--steel);
+    border-top:1px solid var(--line-soft);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .planes-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:0;
+    border:1px solid var(--line-soft);
+  }
+  .plan{
+    padding:44px 34px;
+    border-right:1px solid var(--line-soft);
+    background:var(--steel);
+    display:flex;
+    flex-direction:column;
+    position:relative;
+  }
+  .plan:last-child{ border-right:none; }
+  .plan.rec{
+    background:var(--steel-2);
+    transform:translateY(-22px);
+    padding-top:60px;
+    padding-bottom:66px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+    border-top:4px solid var(--ember);
+  }
+  .plan-ribbon{
+    position:absolute;
+    top:22px; left:34px;
+    font-size:0.75rem;
+    font-weight:700;
+    color:var(--ember);
+    letter-spacing:0.02em;
+  }
+  .plan h3{
+    font-family:'Archivo';
+    font-weight:700;
+    font-size:1.3rem;
+    color:var(--paper);
+  }
+  .plan .price{
+    margin-top:18px;
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  .plan .price .amt{
+    font-family:'Anton';
+    font-size:2.6rem;
+    color:var(--paper);
+  }
+  .plan .price .per{
+    color:var(--paper-dim);
+    font-size:0.9rem;
+  }
+  .plan ul{
+    margin-top:30px;
+    margin-bottom:34px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .plan ul li{
+    display:flex;
+    gap:12px;
+    font-size:0.92rem;
+    color:var(--paper-dim);
+    align-items:flex-start;
+  }
+  .plan ul li svg{ flex-shrink:0; margin-top:3px; width:16px; height:16px; color:var(--ember); }
+  .plan.rec ul li{ color:var(--paper); }
+
+  /* ---------- entrenadores ---------- */
+
+  .entrenadores{
+    padding:150px 0;
+    background:var(--ink);
+  }
+  .coach-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  .coach{
+    position:relative;
+  }
+  .coach:nth-child(2){ margin-top:52px; }
+  .coach-photo{
+    height:400px;
+    background-size:cover;
+    background-position:center;
+    background-color:var(--steel-2);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 96%);
+    margin-bottom:20px;
+  }
+  .coach h3{
+    font-family:'Archivo';
+    font-weight:700;
+    font-size:1.2rem;
+  }
+  .coach .role{
+    color:var(--ember);
+    font-size:0.85rem;
+    font-weight:700;
+    margin-top:6px;
+  }
+  .coach p.quote{
+    color:var(--paper-dim);
+    font-size:0.92rem;
+    margin-top:12px;
+    max-width:32ch;
+  }
+
+  /* ---------- instalaciones ---------- */
+
+  .instalaciones{
+    padding:0 0 150px;
+    background:var(--ink);
+  }
+  .bento{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    grid-template-rows:260px 260px;
+    gap:6px;
+  }
+  .bento-item{
+    position:relative;
+    background-size:cover;
+    background-position:center;
+    background-color:var(--steel-2);
+    overflow:hidden;
+  }
+  .bento-item.b1{ grid-column:1 / 3; grid-row:1 / 3; }
+  .bento-item.b2{ grid-column:3 / 5; grid-row:1 / 2; }
+  .bento-item.b3{ grid-column:3 / 4; grid-row:2 / 3; }
+  .bento-item.b4{ grid-column:4 / 5; grid-row:2 / 3; }
+  .bento-item::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(9,9,10,0.85) 0%, rgba(9,9,10,0) 45%);
+  }
+  .bento-item .cap{
+    position:absolute; left:20px; bottom:16px; z-index:2;
+    font-weight:700; font-size:0.98rem; color:var(--paper);
+  }
+
+  /* ---------- testimonios ---------- */
+
+  .testimonios{
+    padding:150px 0;
+    background:var(--steel);
+    border-top:1px solid var(--line-soft);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .testi-wrap{
+    max-width:820px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .testi-slide{
+    display:none;
+  }
+  .testi-slide.active{ display:block; animation:riseIn 0.6s ease; }
+  .testi-slide blockquote{
+    font-family:'Anton';
+    font-size:clamp(1.5rem, 3.4vw, 2.3rem);
+    line-height:1.25;
+    color:var(--paper);
+  }
+  .testi-slide .who{
+    margin-top:26px;
+    color:var(--paper-dim);
+    font-size:0.95rem;
+    font-weight:600;
+  }
+  .testi-dots{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:44px;
+  }
+  .testi-dots button{
+    width:10px; height:10px;
+    border-radius:50%;
+    border:none;
+    background:var(--line);
+    cursor:pointer;
+    padding:0;
+  }
+  .testi-dots button.active{ background:var(--ember); }
+
+  /* ---------- horarios ---------- */
+
+  .horarios{
+    padding:150px 0;
+    background:var(--ink);
+  }
+  .table-scroll{
+    overflow-x:auto;
+    border:1px solid var(--line-soft);
+  }
+  table.schedule{
+    width:100%;
+    border-collapse:collapse;
+    min-width:760px;
+  }
+  table.schedule th, table.schedule td{
+    padding:16px 18px;
+    text-align:left;
+    border-bottom:1px solid var(--line-soft);
+    border-right:1px solid var(--line-soft);
+    font-size:0.88rem;
+    white-space:nowrap;
+  }
+  table.schedule th:last-child, table.schedule td:last-child{ border-right:none; }
+  table.schedule thead th{
+    background:var(--ember);
+    color:#100701;
+    font-weight:800;
+    font-size:0.8rem;
+  }
+  table.schedule tbody th{
+    background:var(--steel-2);
+    color:var(--paper-dim);
+    font-weight:700;
+  }
+  table.schedule tbody tr:nth-child(even){ background:rgba(255,255,255,0.02); }
+  table.schedule tbody tr:last-child td, table.schedule tbody tr:last-child th{ border-bottom:none; }
+  table.schedule td{ color:var(--paper-dim); }
+  table.schedule td.free{ color:var(--line); }
+
+  /* ---------- ubicacion ---------- */
+
+  .ubicacion{
+    padding:0 0 150px;
+    background:var(--ink);
+  }
+  .loc-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2px;
+    border:1px solid var(--line-soft);
+  }
+  .loc-map iframe{
+    width:100%; height:100%;
+    min-height:420px;
+    border:0;
+    filter:grayscale(0.4) contrast(1.1) invert(0.92);
+  }
+  .loc-info{
+    padding:48px;
+    background:var(--steel);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:28px;
+  }
+  .loc-info h3{
+    font-family:'Archivo';
+    font-weight:700;
+    font-size:1.05rem;
+    color:var(--paper);
+    margin-bottom:6px;
+  }
+  .loc-info p{
+    color:var(--paper-dim);
+    font-size:0.95rem;
+  }
+
+  /* ---------- cta ---------- */
+
+  .cta{
+    padding:130px 0;
+    background:linear-gradient(120deg, var(--ember-deep), var(--ember) 60%, var(--amber) 130%);
+    text-align:center;
+  }
+  .cta h2{
+    font-size:clamp(2.2rem, 6vw, 4.6rem);
+    color:#140800;
+  }
+  .cta p{
+    margin-top:18px;
+    color:rgba(20,8,0,0.75);
+    font-weight:600;
+    font-size:1.1rem;
+  }
+  .cta .btn{ margin-top:36px; }
+  .cta .btn-solid{ background:#140800; color:var(--paper); }
+  .cta .btn-solid:hover{ background:#2a1200; }
+
+  /* ---------- footer ---------- */
+
+  footer{
+    background:var(--steel);
+    padding:80px 0 34px;
+  }
+  .foot-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:56px;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .foot-brand p{
+    color:var(--paper-dim);
+    font-size:0.92rem;
+    margin-top:18px;
+    max-width:30ch;
+  }
+  .foot-col h4{
+    font-family:'Archivo';
+    font-weight:700;
+    font-size:0.92rem;
+    color:var(--paper);
+    margin-bottom:18px;
+  }
+  .foot-col ul{ display:flex; flex-direction:column; gap:12px; }
+  .foot-col a{
+    color:var(--paper-dim);
+    font-size:0.92rem;
+    transition:color 0.2s ease;
+  }
+  .foot-col a:hover{ color:var(--ember); }
+  .foot-bottom{
+    padding-top:28px;
+    display:flex;
+    justify-content:space-between;
+    color:var(--line);
+    font-size:0.82rem;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  /* ---------- responsive ---------- */
+
+  @media (max-width: 980px){
+    nav.links{ display:none; }
+    .burger{ display:block; }
+    .beneficios-body{ grid-template-columns:1fr; }
+    .stat-strip{ grid-template-columns:repeat(2,1fr); }
+    .stat-strip .stat:nth-child(2n){ border-right:none; }
+    .planes-grid{ grid-template-columns:1fr; border:none; }
+    .plan{ border-right:none; border-bottom:1px solid var(--line-soft); }
+    .plan.rec{ transform:none; }
+    .coach-grid{ grid-template-columns:1fr; gap:44px; }
+    .coach:nth-child(2){ margin-top:0; }
+    .bento{ grid-template-columns:1fr 1fr; grid-template-rows:220px 220px 220px; }
+    .bento-item.b1{ grid-column:1/3; grid-row:1/2; }
+    .bento-item.b2{ grid-column:1/3; grid-row:2/3; }
+    .bento-item.b3{ grid-column:1/2; grid-row:3/4; }
+    .bento-item.b4{ grid-column:2/3; grid-row:3/4; }
+    .loc-grid{ grid-template-columns:1fr; }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
+    .section-head{ flex-direction:column; align-items:flex-start; gap:16px; }
+  }
+
+  @media (max-width: 600px){
+    .wrap{ padding:0 20px; }
+    .hero-content{ padding-bottom:70px; }
+    .hero-actions{ flex-direction:column; align-items:flex-start; }
+    .foot-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="siteNav">
+  <div class="wrap">
+    <div class="logo"><span class="bar"></span>TITAN FITNESS</div>
+    <nav class="links">
+      <a href="#beneficios">Beneficios</a>
+      <a href="#entrenamientos">Entrenamientos</a>
+      <a href="#planes">Planes</a>
+      <a href="#entrenadores">Entrenadores</a>
+      <a href="#horarios">Horarios</a>
+      <a href="#ubicacion">Ubicación</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#planes" class="btn btn-solid">Ver planes</a>
+      <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#beneficios">Beneficios</a>
+  <a href="#entrenamientos">Entrenamientos</a>
+  <a href="#planes">Planes</a>
+  <a href="#entrenadores">Entrenadores</a>
+  <a href="#horarios">Horarios</a>
+  <a href="#ubicacion">Ubicación</a>
+  <a href="#planes" class="btn btn-solid" style="width:fit-content; margin-top:10px;">Ver planes</a>
+</div>
+
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-slab"></div>
+  <div class="wrap hero-content">
+    <div class="hero-eyebrow"><span class="dot"></span>Arequipa · Entrenamiento de alto rendimiento</div>
+    <h1>CONVIERTE TU ESFUERZO EN RESULTADOS.</h1>
+    <p class="sub">Entrena más fuerte. Vive mejor.</p>
+    <div class="hero-actions">
+      <a href="#planes" class="btn btn-solid">Ver planes</a>
+      <a href="#beneficios" class="btn btn-outline">Conocer el gimnasio</a>
+    </div>
+    <div class="stat-strip">
+      <div class="stat"><div class="num">1,200+</div><div class="lab">Miembros activos</div></div>
+      <div class="stat"><div class="num">14</div><div class="lab">Entrenadores certificados</div></div>
+      <div class="stat"><div class="num">30</div><div class="lab">Clases grupales por semana</div></div>
+      <div class="stat"><div class="num">9</div><div class="lab">Años formando atletas</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="beneficios" id="beneficios">
+  <div class="wrap beneficios-body">
+    <div class="beneficios-lead">
+      <h2>No es solo un gimnasio. Es un cambio de estándar.</h2>
+      <p>Titan Fitness está construido para personas que quieren medir su progreso, no solo sudar. Cada área, clase y entrenador está pensado para que tu esfuerzo se traduzca en resultados reales.</p>
+    </div>
+    <div class="beneficios-list">
+      <div class="beneficio-row">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-14h-7z"/></svg></div>
+        <div><h3>Energía desde el primer minuto</h3><p>Clases de alta intensidad y música que te empuja a dar la siguiente repetición, no la anterior.</p></div>
+      </div>
+      <div class="beneficio-row">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8.7 8 9 4.6-.3 8-4 8-9V6z"/></svg></div>
+        <div><h3>Disciplina con estructura</h3><p>Rutinas progresivas y objetivos claros por bloque de entrenamiento, no improvisación.</p></div>
+      </div>
+      <div class="beneficio-row">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg></div>
+        <div><h3>Comunidad que te sostiene</h3><p>Entrenar acompañado cambia todo: retos grupales, rankings amistosos y compañeros que te exigen.</p></div>
+      </div>
+      <div class="beneficio-row">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 6h6v6"/></svg></div>
+        <div><h3>Progreso que puedes ver</h3><p>Seguimiento de fuerza, resistencia y composición corporal mes a mes, con datos reales.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="entrenamientos" id="entrenamientos">
+  <div class="wrap section-head">
+    <h2>Elige tu forma de entrenar</h2>
+    <p>Cuatro disciplinas, un mismo objetivo: que salgas mejor de lo que entraste.</p>
+  </div>
+  <div class="wrap">
+    <div class="filmstrip">
+      <div class="film-card" style="background-image:url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=900&q=80')">
+        <div class="film-txt"><div class="n">Fuerza</div><h3>Levantamiento y powerlifting</h3><p>Sentadilla, press y peso muerto con técnica supervisada.</p></div>
+      </div>
+      <div class="film-card" style="background-image:url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80')">
+        <div class="film-txt"><div class="n">Funcional</div><h3>Circuitos funcionales</h3><p>Movimientos multiarticulares para fuerza aplicada al día a día.</p></div>
+      </div>
+      <div class="film-card" style="background-image:url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=900&q=80')">
+        <div class="film-txt"><div class="n">Cardio</div><h3>HIIT y resistencia</h3><p>Bloques de alta intensidad para capacidad cardiovascular y quema calórica.</p></div>
+      </div>
+      <div class="film-card" style="background-image:url('https://images.unsplash.com/photo-1550345332-09e3ac987658?auto=format&fit=crop&w=900&q=80')">
+        <div class="film-txt"><div class="n">Recuperación</div><h3>Movilidad y descanso activo</h3><p>Trabajo de rango de movimiento para entrenar más y lesionarte menos.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="planes" id="planes">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Planes hechos para avanzar</h2>
+      <p>Sin letra pequeña. Cambia o cancela tu plan cuando quieras.</p>
+    </div>
+    <div class="planes-grid">
+      <div class="plan">
+        <h3>Básico</h3>
+        <div class="price"><span class="amt">S/79</span><span class="per">/ mes</span></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Acceso a sala de pesas y cardio</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Horario de 6:00 a 22:00</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Casillero diario incluido</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>App de seguimiento básico</li>
+        </ul>
+        <a href="#ubicacion" class="btn btn-block">Elegir Básico</a>
+      </div>
+      <div class="plan rec">
+        <div class="plan-ribbon">Más elegido</div>
+        <h3>Pro</h3>
+        <div class="price"><span class="amt">S/109</span><span class="per">/ mes</span></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Todo lo del plan Básico</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Clases grupales ilimitadas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>1 sesión mensual con entrenador</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Acceso a zona de recuperación</li>
+        </ul>
+        <a href="#ubicacion" class="btn btn-solid">Elegir Pro</a>
+      </div>
+      <div class="plan">
+        <h3>Elite</h3>
+        <div class="price"><span class="amt">S/149</span><span class="per">/ mes</span></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Todo lo del plan Pro</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Plan de entrenamiento personalizado</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Seguimiento nutricional mensual</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Acceso 24/7 e invitados 2 veces al mes</li>
+        </ul>
+        <a href="#ubicacion" class="btn btn-block">Elegir Elite</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="entrenadores" id="entrenadores">
+  <div class="wrap section-head">
+    <h2>Entrenadores que exigen y explican</h2>
+    <p>Certificados, cercanos y obsesionados con tu técnica.</p>
+  </div>
+  <div class="wrap coach-grid">
+    <div class="coach">
+      <div class="coach-photo" style="background-image:url('https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=700&q=80')"></div>
+      <h3>Renzo Quispe</h3>
+      <div class="role">Fuerza y powerlifting</div>
+      <p class="quote">"La técnica primero, el peso después. Así se entrena sin límite de tiempo."</p>
+    </div>
+    <div class="coach">
+      <div class="coach-photo" style="background-image:url('https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=700&q=80')"></div>
+      <h3>Camila Ríos</h3>
+      <div class="role">Funcional y HIIT</div>
+      <p class="quote">"Cada circuito se adapta a ti. El cansancio es igual para todos, el ritmo no."</p>
+    </div>
+    <div class="coach">
+      <div class="coach-photo" style="background-image:url('https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?auto=format&fit=crop&w=700&q=80')"></div>
+      <h3>Diego Salas</h3>
+      <div class="role">Movilidad y recuperación</div>
+      <p class="quote">"El músculo que no recupera es el músculo que no crece. Lo trabajamos también."</p>
+    </div>
+  </div>
+</section>
+
+<section class="instalaciones" id="instalaciones">
+  <div class="wrap section-head">
+    <h2>Instalaciones diseñadas para rendir</h2>
+    <p>Equipamiento profesional en cada zona del gimnasio.</p>
+  </div>
+  <div class="wrap">
+    <div class="bento">
+      <div class="bento-item b1" style="background-image:url('https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1000&q=80')"><span class="cap">Zona de pesas</span></div>
+      <div class="bento-item b2" style="background-image:url('https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80')"><span class="cap">Área de cardio</span></div>
+      <div class="bento-item b3" style="background-image:url('https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=700&q=80')"><span class="cap">Entrenamiento funcional</span></div>
+      <div class="bento-item b4" style="background-image:url('https://images.unsplash.com/photo-1607962837359-5e7e89f86776?auto=format&fit=crop&w=700&q=80')"><span class="cap">Vestidores</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonios" id="testimonios">
+  <div class="wrap testi-wrap">
+    <div class="testi-slide active">
+      <blockquote>"Bajé de rutina en dos gimnasios distintos. En Titan por fin vi progreso real en ocho semanas."</blockquote>
+      <div class="who">María Fernanda Cutipa — miembro desde 2023</div>
+    </div>
+    <div class="testi-slide">
+      <blockquote>"Los entrenadores corrigen tu técnica sin que lo pidas. Eso evitó que me lesionara la espalda."</blockquote>
+      <div class="who">Jorge Luis Apaza — miembro desde 2022</div>
+    </div>
+    <div class="testi-slide">
+      <blockquote>"El horario 24/7 del plan Elite me permite entrenar antes del turno de noche. No tengo excusa."</blockquote>
+      <div class="who">Valeria Ninachoque — miembro desde 2024</div>
+    </div>
+    <div class="testi-dots" id="testiDots"></div>
+  </div>
+</section>
+
+<section class="horarios" id="horarios">
+  <div class="wrap section-head">
+    <h2>Horarios de clases</h2>
+    <p>La sala de pesas y cardio abre de 6:00 a 22:00 todos los días.</p>
+  </div>
+  <div class="wrap">
+    <div class="table-scroll">
+      <table class="schedule">
+        <thead>
+          <tr>
+            <th>Hora</th><th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th><th>Sábado</th><th>Domingo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th>06:00</th><td>Fuerza</td><td class="free">Sala libre</td><td>Fuerza</td><td class="free">Sala libre</td><td>Fuerza</td><td>Funcional</td><td class="free">Cerrado</td></tr>
+          <tr><th>07:00</th><td>HIIT</td><td>Spinning</td><td>HIIT</td><td>Spinning</td><td>HIIT</td><td>Movilidad</td><td class="free">Cerrado</td></tr>
+          <tr><th>09:00</th><td class="free">Sala libre</td><td>Funcional</td><td class="free">Sala libre</td><td>Funcional</td><td class="free">Sala libre</td><td>Fuerza</td><td>Yoga</td></tr>
+          <tr><th>12:00</th><td>Movilidad</td><td class="free">Sala libre</td><td>Movilidad</td><td class="free">Sala libre</td><td>Movilidad</td><td class="free">Sala libre</td><td class="free">Sala libre</td></tr>
+          <tr><th>17:00</th><td>Funcional</td><td>Fuerza</td><td>Funcional</td><td>Fuerza</td><td>Funcional</td><td class="free">Sala libre</td><td class="free">Cerrado</td></tr>
+          <tr><th>18:00</th><td>Spinning</td><td>HIIT</td><td>Spinning</td><td>HIIT</td><td>Spinning</td><td class="free">Sala libre</td><td class="free">Cerrado</td></tr>
+          <tr><th>19:00</th><td>Boxeo</td><td>Funcional</td><td>Boxeo</td><td>Funcional</td><td>Boxeo</td><td class="free">Cerrado</td><td class="free">Cerrado</td></tr>
+          <tr><th>20:00</th><td>Yoga</td><td>Movilidad</td><td>Yoga</td><td>Movilidad</td><td class="free">Sala libre</td><td class="free">Cerrado</td><td class="free">Cerrado</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="ubicacion" id="ubicacion">
+  <div class="wrap">
+    <div class="loc-grid">
+      <div class="loc-map">
+        <iframe src="https://www.google.com/maps?q=Arequipa,Peru&output=embed" loading="lazy" title="Ubicación de Titan Fitness"></iframe>
+      </div>
+      <div class="loc-info">
+        <div>
+          <h3>Dirección</h3>
+          <p>Av. Ejército 710, Cayma, Arequipa, Perú</p>
+        </div>
+        <div>
+          <h3>Horario de atención</h3>
+          <p>Lunes a viernes: 6:00 – 22:00 · Sábado: 7:00 – 20:00 · Domingo: 8:00 – 13:00</p>
+        </div>
+        <div>
+          <h3>Contacto</h3>
+          <p>+51 954 210 330 · hola@titanfitness.pe</p>
+        </div>
+        <a href="#planes" class="btn btn-solid" style="width:fit-content;">Ver planes</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Tu transformación comienza hoy.</h2>
+    <p>Reserva tu primera visita y conoce el gimnasio sin compromiso.</p>
+    <a href="#planes" class="btn btn-solid">Empieza ahora</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo"><span class="bar"></span>TITAN FITNESS</div>
+        <p>Entrenamiento de fuerza, funcional y cardio para quienes miden su progreso en resultados, no en intenciones.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Gimnasio</h4>
+        <ul>
+          <li><a href="#beneficios">Beneficios</a></li>
+          <li><a href="#entrenamientos">Entrenamientos</a></li>
+          <li><a href="#entrenadores">Entrenadores</a></li>
+          <li><a href="#instalaciones">Instalaciones</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Membresía</h4>
+        <ul>
+          <li><a href="#planes">Planes y precios</a></li>
+          <li><a href="#horarios">Horarios</a></li>
+          <li><a href="#testimonios">Testimonios</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Síguenos</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Titan Fitness. Todos los derechos reservados.</span>
+      <span>Av. Ejército 710, Cayma, Arequipa</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // navbar solid on scroll
+  const navEl = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    navEl.classList.toggle('solid', window.scrollY > 40);
+  }, { passive: true });
+
+  // mobile menu
+  const burger = document.getElementById('burgerBtn');
+  const panel = document.getElementById('mobilePanel');
+  burger.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    burger.classList.toggle('open', isOpen);
+    burger.setAttribute('aria-expanded', isOpen);
+  });
+  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    panel.classList.remove('open');
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded', false);
+  }));
+
+  // testimonial slider
+  const slides = document.querySelectorAll('.testi-slide');
+  const dotsWrap = document.getElementById('testiDots');
+  slides.forEach((_, i) => {
+    const b = document.createElement('button');
+    if (i === 0) b.classList.add('active');
+    b.setAttribute('aria-label', 'Ver testimonio ' + (i + 1));
+    b.addEventListener('click', () => showTesti(i));
+    dotsWrap.appendChild(b);
+  });
+  let testiIndex = 0;
+  function showTesti(i){
+    slides[testiIndex].classList.remove('active');
+    dotsWrap.children[testiIndex].classList.remove('active');
+    testiIndex = i;
+    slides[testiIndex].classList.add('active');
+    dotsWrap.children[testiIndex].classList.add('active');
+  }
+  setInterval(() => { showTesti((testiIndex + 1) % slides.length); }, 6000);
+
+  // subtle parallax on hero background
+  const heroBg = document.querySelector('.hero-bg');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y < window.innerHeight) {
+      heroBg.style.transform = `translateY(${y * 0.15}px) scale(1.0)`;
+    }
+  }, { passive: true });
+</script>
+
+</body>
+</html>
