@@ -1213,6 +1213,11 @@
       .presentacion-top, .dish-grid, .menu-grid { grid-template-columns: 1fr !important; }
       .features { grid-template-columns: 1fr; }
       .hero h1 { font-size: 3.5rem !important; }
+      .nav-cta { display: none !important; }
+      .nav-inner { align-items: center; justify-content: space-between; width: 100%; }
+      .hero-inner { padding-top: 110px !important; }
+      .hero-actions .btn-outline { display: none !important; }
+      .hero-actions { justify-content: center; margin-top: 30px; }
     }
     @media (max-width: 480px) {
       .hero h1 { font-size: 2.8rem !important; }
@@ -1221,6 +1226,17 @@
       .container { padding: 0 15px; }
       .hero-bottom-row, .hero-meta { flex-direction: column; align-items: flex-start; }
       .dish-body { padding: 15px; }
+      .hero-inner { padding-top: 90px !important; }
+    }
+    .hero-inner { padding-top: 110px; }
+    .hero-actions .btn-outline {
+      background: rgba(33, 27, 21, 0.4);
+      backdrop-filter: blur(4px);
+      border: 1.5px solid rgba(244, 236, 221, 0.6);
+      color: #fff;
+    }
+    .hero-actions .btn-outline:hover {
+      background: rgba(33, 27, 21, 0.7);
     }
   </style>
 </head>
