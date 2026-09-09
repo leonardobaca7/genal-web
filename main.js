@@ -380,6 +380,105 @@
 
 /* ─── INIT DONE ───────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('%c GENAL Studio ', 'background:#00D4FF;color:#08080E;font-weight:900;font-size:14px;padding:4px 8px;border-radius:4px;');
-  console.log('%c Tu próxima web empieza aquí. ', 'color:#9898B8;font-size:12px;');
+  console.log('%c GENAL Studio ', 'background:#0052FF;color:#fff;font-weight:900;font-size:14px;padding:4px 8px;border-radius:4px;');
+  console.log('%c Tu próxima web empieza aquí. ', 'color:#475569;font-size:12px;');
 });
+
+/* ─── BUSINESS SLIDER ──────────────────────────────────────────── */
+(function initBizSlider() {
+  var slider  = document.getElementById('biz-slider');
+  var btnPrev = document.getElementById('biz-prev');
+  var btnNext = document.getElementById('biz-next');
+
+  if (!slider || !btnPrev || !btnNext) return;
+
+  var SCROLL_STEP = 290;   // px per arrow click (≈ card width + gap)
+
+  function updateArrows() {
+    btnPrev.disabled = slider.scrollLeft <= 0;
+    btnNext.disabled = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1;
+  }
+
+  btnPrev.addEventListener('click', function () {
+    slider.scrollBy({ left: -SCROLL_STEP, behavior: 'smooth' });
+  });
+
+  btnNext.addEventListener('click', function () {
+    slider.scrollBy({ left: SCROLL_STEP, behavior: 'smooth' });
+  });
+
+  slider.addEventListener('scroll', updateArrows, { passive: true });
+  window.addEventListener('resize', updateArrows, { passive: true });
+  updateArrows(); // initial state
+
+  /* ── Mouse-drag to scroll ─────────────────────────────────── */
+  var isDragging = false;
+  var startX     = 0;
+  var scrollLeft = 0;
+
+  slider.addEventListener('mousedown', function (e) {
+    isDragging = true;
+    startX     = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+    slider.classList.add('dragging');
+  });
+
+  document.addEventListener('mouseup', function () {
+    if (!isDragging) return;
+    isDragging = false;
+    slider.classList.remove('dragging');
+  });
+
+  document.addEventListener('mousemove', function (e) {
+    if (!isDragging) return;
+    e.preventDefault();
+    var x    = e.pageX - slider.offsetLeft;
+    var walk = (x - startX) * 1.2;
+    slider.scrollLeft = scrollLeft - walk;
+  });
+})();
+
+/* ─── CONTACT FORM → WHATSAPP ──────────────────────────────────── */
+(function initContactForm() {
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    var nombre      = (document.getElementById('form-nombre')   ? document.getElementById('form-nombre').value.trim()   : '');
+    var whatsapp    = (document.getElementById('form-whatsapp') ? document.getElementById('form-whatsapp').value.trim() : '');
+    var tipoNegocio = (document.getElementById('form-tipo')     ? document.getElementById('form-tipo').value.trim()     : '');
+    var mensaje     = (document.getElementById('form-mensaje')  ? document.getElementById('form-mensaje').value.trim()  : '');
+
+    // Validate required fields
+    if (!nombre || !whatsapp) {
+      var firstEmpty = !nombre
+        ? document.getElementById('form-nombre')
+        : document.getElementById('form-whatsapp');
+      firstEmpty.focus();
+      firstEmpty.style.borderColor = '#ef4444';
+      setTimeout(function () { firstEmpty.style.borderColor = ''; }, 2500);
+      return;
+    }
+
+    var tipoLabel = tipoNegocio || 'No especificado';
+    var mensajeLabel = mensaje || 'Sin detalles adicionales';
+
+    var text =
+      'Hola GENAL Web! ' +
+      'Mi nombre es *' + nombre + '*, ' +
+      'tengo un negocio de tipo *' + tipoLabel + '*. ' +
+      'Mi número es ' + whatsapp + '. ' +
+      'Detalles: ' + mensajeLabel;
+
+    var url = 'https://wa.me/51995881713?text=' + encodeURIComponent(text);
+    window.open(url, '_blank', 'noopener,noreferrer');
+  });
+
+  // Live validation feedback: reset border on input
+  ['form-nombre', 'form-whatsapp'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', function () { this.style.borderColor = ''; });
+  });
+})();
