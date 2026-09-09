@@ -865,8 +865,8 @@ input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
   flex-shrink: 0;
+  color: #ff3b30;
 }
 
 .problem-text h4 {
@@ -949,8 +949,8 @@ input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
   margin-bottom: 1.25rem;
+  color: var(--accent-cyan);
 }
 
 .value-card h3 {
@@ -1237,9 +1237,14 @@ input, textarea, select {
 }
 
 .business-emoji {
-  font-size: 2rem;
   margin-bottom: 0.75rem;
-  display: block;
+  display: flex;
+  justify-content: center;
+  color: var(--accent-cyan);
+}
+.business-emoji svg {
+  width: 32px;
+  height: 32px;
 }
 
 .business-card h4 {
@@ -1540,8 +1545,8 @@ input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.15rem;
   margin-bottom: 1.25rem;
+  color: var(--accent-violet);
 }
 
 .why-card h3 {
