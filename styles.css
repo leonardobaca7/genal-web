@@ -9,25 +9,44 @@
 /* ─── Design Tokens ─────────────────────────────────────────── */
 :root {
   /* ── Light Theme Colors ── */
-  --bg-primary:       #F8F9FC;
-  --bg-secondary:     #F1F3F9;
+  --bg-primary:       #F8FAFC;
+  --bg-secondary:     #F1F5F9;
   --bg-card:          #FFFFFF;
-  --bg-card-hover:    #F4F6FB;
-  --bg-glass:         rgba(255, 255, 255, 0.75);
+  --bg-card-hover:    #F8FAFC;
+  --bg-glass:         rgba(255, 255, 255, 0.80);
 
-  --accent-cyan:      #0099CC;
-  --accent-cyan-dim:  rgba(0, 153, 204, 0.10);
-  --accent-cyan-glow: rgba(0, 153, 204, 0.22);
-  --accent-violet:    #6D28D9;
-  --accent-violet-dim:rgba(109, 40, 217, 0.10);
-  --accent-gradient:  linear-gradient(135deg, #0099CC 0%, #6D28D9 100%);
-  --accent-gradient-rev: linear-gradient(135deg, #6D28D9 0%, #0099CC 100%);
+  /* ── Brand Palette (Genal official logo colors) ── */
+  --primary:          #0052FF;
+  --primary-hover:    #0041CC;
+  --primary-dim:      rgba(0, 82, 255, 0.08);
+  --primary-light:    #EEF3FF;
 
-  --text-primary:     #0F0F1A;
-  --text-secondary:   #4B5068;
-  --text-muted:       #8B90A8;
-  --border:           rgba(0, 0, 0, 0.08);
-  --border-accent:    rgba(0, 153, 204, 0.30);
+  --accent:           #00C2CB;
+  --accent-light:     #E0FBFC;
+  --accent-dim:       rgba(0, 194, 203, 0.10);
+  --accent-glow:      rgba(0, 194, 203, 0.22);
+
+  /* ── Legacy aliases (backward compat) ── */
+  --accent-cyan:        #0052FF;
+  --accent-cyan-dim:    rgba(0, 82, 255, 0.08);
+  --accent-cyan-glow:   rgba(0, 82, 255, 0.18);
+  --accent-violet:      #0052FF;
+  --accent-violet-dim:  rgba(0, 82, 255, 0.08);
+  --accent-gradient:    linear-gradient(135deg, #0052FF 0%, #00C2CB 100%);
+  --accent-gradient-rev:linear-gradient(135deg, #00C2CB 0%, #0052FF 100%);
+  --border-accent:      rgba(0, 82, 255, 0.25);
+
+  /* ── Text ── */
+  --text-primary:     #0F172A;
+  --text-secondary:   #475569;
+  --text-muted:       #94A3B8;
+  --border:           #E2E8F0;
+
+  /* ── Semantic aliases matching brand spec ── */
+  --bg-main:          #FFFFFF;
+  --bg-soft:          #F8FAFC;
+  --text-dark:        #0F172A;
+  --border-card:      #E2E8F0;
 
   /* Spacing */
   --space-xs:   0.5rem;
@@ -56,18 +75,20 @@
 
   /* Borders */
   --radius-sm:   0.5rem;
-  --radius-md:   1rem;
-  --radius-lg:   1.5rem;
-  --radius-xl:   2rem;
+  --radius-md:   0.75rem;
+  --radius-lg:   1rem;
+  --radius-xl:   1.25rem;
+  --radius-2xl:  1.5rem;
   --radius-full: 9999px;
 
   /* Shadows */
-  --shadow-sm:    0 2px 8px rgba(0,0,0,0.06);
-  --shadow-md:    0 8px 32px rgba(0,0,0,0.10);
-  --shadow-lg:    0 24px 64px rgba(0,0,0,0.12);
-  --shadow-cyan:  0 0 40px rgba(0, 153, 204, 0.12);
-  --shadow-violet:0 0 40px rgba(109, 40, 217, 0.12);
-  --shadow-glow:  0 0 80px rgba(0, 153, 204, 0.08), 0 0 160px rgba(109, 40, 217, 0.06);
+  --shadow-sm:     0 2px 8px rgba(0,0,0,0.05);
+  --shadow-md:     0 8px 32px rgba(0,0,0,0.08);
+  --shadow-lg:     0 24px 64px rgba(0,0,0,0.10);
+  --shadow-cyan:   0 4px 20px rgba(0, 82, 255, 0.08);
+  --shadow-violet: 0 4px 20px rgba(0, 82, 255, 0.10);
+  --shadow-glow:   0 0 80px rgba(0, 82, 255, 0.07), 0 0 160px rgba(0, 194, 203, 0.05);
+  --shadow-card:   0 4px 12px rgba(0, 82, 255, 0.04);
 
   /* Transitions */
   --transition-fast:   150ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -113,10 +134,10 @@ input, textarea, select {
 /* ─── Scrollbar ─────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-secondary); }
-::-webkit-scrollbar-thumb { background: var(--accent-violet); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
 
 /* ─── Selection ─────────────────────────────────────────────── */
-::selection { background: var(--accent-cyan); color: #fff; }
+::selection { background: var(--primary); color: #fff; }
 
 /* ─── Layout Utilities ──────────────────────────────────────── */
 .container {
@@ -144,9 +165,9 @@ input, textarea, select {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent-cyan);
-  background: var(--accent-cyan-dim);
-  border: 1px solid var(--border-accent);
+  color: var(--primary);
+  background: var(--primary-dim);
+  border: 1px solid rgba(0, 82, 255, 0.20);
   padding: 0.35rem 0.85rem;
   border-radius: var(--radius-full);
   margin-bottom: 1.25rem;
@@ -158,6 +179,7 @@ input, textarea, select {
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.03em;
+  color: var(--text-dark);
   margin-bottom: 1rem;
 }
 
@@ -203,27 +225,28 @@ input, textarea, select {
 .btn:hover::before { opacity: 1; }
 
 .btn-primary {
-  background: var(--accent-gradient);
-  color: var(--bg-primary);
+  background: var(--primary);
+  color: #FFFFFF;
   font-weight: 700;
-  box-shadow: 0 4px 24px rgba(0, 212, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 82, 255, 0.30);
 }
 .btn-primary::before { background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent); }
 .btn-primary:hover {
+  background: var(--primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.4);
+  box-shadow: 0 8px 28px rgba(0, 82, 255, 0.40);
 }
 .btn-primary:active { transform: translateY(0); }
 
 .btn-outline {
-  border: 1px solid var(--border-accent);
-  color: var(--text-primary);
-  background: rgba(0, 212, 255, 0.05);
+  border: 1.5px solid rgba(0, 82, 255, 0.30);
+  color: var(--primary);
+  background: var(--primary-dim);
 }
-.btn-outline::before { background: rgba(0, 212, 255, 0.08); }
+.btn-outline::before { background: rgba(0, 82, 255, 0.06); }
 .btn-outline:hover {
-  border-color: var(--accent-cyan);
-  color: var(--accent-cyan);
+  border-color: var(--primary);
+  background: var(--primary-dim);
   transform: translateY(-2px);
 }
 
@@ -231,7 +254,7 @@ input, textarea, select {
   color: var(--text-secondary);
   padding: 0.5rem 0;
 }
-.btn-ghost:hover { color: var(--accent-cyan); }
+.btn-ghost:hover { color: var(--primary); }
 
 .btn-lg {
   padding: 1.1rem 2.5rem;
@@ -910,12 +933,13 @@ input, textarea, select {
 
 .value-card {
   background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
   padding: 2rem 1.5rem;
   transition: all var(--transition-base);
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
 
 .value-card::before {
@@ -924,7 +948,7 @@ input, textarea, select {
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 3px;
   background: var(--accent-gradient);
   transform: scaleX(0);
   transform-origin: left;
@@ -932,10 +956,10 @@ input, textarea, select {
 }
 
 .value-card:hover {
-  border-color: rgba(0, 212, 255, 0.2);
-  background: var(--bg-card-hover);
+  border-color: rgba(0, 82, 255, 0.20);
+  background: var(--bg-card);
   transform: translateY(-4px);
-  box-shadow: var(--shadow-cyan);
+  box-shadow: 0 8px 28px rgba(0, 82, 255, 0.10);
 }
 
 .value-card:hover::before { transform: scaleX(1); }
@@ -943,19 +967,20 @@ input, textarea, select {
 .value-icon {
   width: 48px;
   height: 48px;
-  border-radius: var(--radius-md);
-  background: var(--accent-cyan-dim);
-  border: 1px solid var(--border-accent);
+  border-radius: 10px;
+  background: var(--accent-light);
+  border: 1px solid rgba(0, 194, 203, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.25rem;
-  color: var(--accent-cyan);
+  color: var(--primary);
 }
 
 .value-card h3 {
   font-size: var(--text-base);
   font-weight: 700;
+  color: var(--text-dark);
   margin-bottom: 0.5rem;
 }
 
@@ -1221,26 +1246,27 @@ input, textarea, select {
 
 .business-card {
   background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
   padding: 1.75rem 1.25rem;
   text-align: center;
   transition: all var(--transition-base);
   cursor: default;
+  box-shadow: var(--shadow-card);
 }
 
 .business-card:hover {
-  border-color: rgba(0, 212, 255, 0.25);
-  background: var(--bg-card-hover);
+  border-color: rgba(0, 82, 255, 0.25);
+  background: var(--bg-card);
   transform: translateY(-4px);
-  box-shadow: var(--shadow-cyan);
+  box-shadow: 0 8px 28px rgba(0, 82, 255, 0.10);
 }
 
 .business-emoji {
   margin-bottom: 0.75rem;
   display: flex;
   justify-content: center;
-  color: var(--accent-cyan);
+  color: var(--primary);
 }
 .business-emoji svg {
   width: 32px;
@@ -1253,7 +1279,7 @@ input, textarea, select {
   color: var(--text-secondary);
 }
 
-.business-card:hover h4 { color: var(--text-primary); }
+.business-card:hover h4 { color: var(--text-dark); }
 
 .forwhom-cta {
   text-align: center;
@@ -1524,34 +1550,36 @@ input, textarea, select {
 
 .why-card {
   background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
   padding: 2rem 1.75rem;
   transition: all var(--transition-base);
+  box-shadow: var(--shadow-card);
 }
 
 .why-card:hover {
-  border-color: rgba(124, 58, 237, 0.3);
+  border-color: rgba(0, 82, 255, 0.25);
   transform: translateY(-3px);
-  box-shadow: var(--shadow-violet);
+  box-shadow: 0 8px 28px rgba(0, 82, 255, 0.10);
 }
 
 .why-icon {
   width: 44px;
   height: 44px;
-  border-radius: var(--radius-md);
-  background: var(--accent-violet-dim);
-  border: 1px solid rgba(124, 58, 237, 0.2);
+  border-radius: 10px;
+  background: var(--primary-dim);
+  border: 1px solid rgba(0, 82, 255, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.25rem;
-  color: var(--accent-violet);
+  color: var(--primary);
 }
 
 .why-card h3 {
   font-size: var(--text-base);
   font-weight: 700;
+  color: var(--text-dark);
   margin-bottom: 0.5rem;
 }
 
@@ -1798,34 +1826,36 @@ input, textarea, select {
 
 .contact-way-card {
   background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-card);
+  border-radius: 16px;
   padding: 2rem;
   transition: all var(--transition-base);
+  box-shadow: var(--shadow-card);
 }
 
 .contact-way-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(0, 212, 255, 0.2);
+  border-color: rgba(0, 82, 255, 0.25);
+  box-shadow: 0 8px 28px rgba(0, 82, 255, 0.10);
 }
 
 .contact-way-icon {
   width: 52px;
   height: 52px;
-  border-radius: var(--radius-md);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
   margin-bottom: 1.25rem;
 }
 
-.contact-way-icon.whatsapp-icon { background: rgba(37, 211, 102, 0.15); }
-.contact-way-icon.email-icon    { background: var(--accent-cyan-dim); }
+.contact-way-icon.whatsapp-icon { background: rgba(37, 211, 102, 0.12); }
+.contact-way-icon.email-icon    { background: var(--accent-light); }
 
 .contact-way-card h3 {
   font-size: var(--text-lg);
   font-weight: 700;
+  color: var(--text-dark);
   margin-bottom: 0.5rem;
 }
 
@@ -1839,15 +1869,17 @@ input, textarea, select {
 /* Contact Form */
 .contact-form-wrap {
   background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-card);
+  border-radius: 16px;
   padding: 2.5rem;
+  box-shadow: var(--shadow-card);
 }
 
 .contact-form-wrap h3 {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: 700;
+  color: var(--text-dark);
   margin-bottom: 0.5rem;
 }
 
@@ -1881,9 +1913,9 @@ input, textarea, select {
 }
 
 .form-input, .form-select, .form-textarea {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  background: var(--bg-soft);
+  border: 1.5px solid var(--border-card);
+  border-radius: 10px;
   padding: 0.85rem 1rem;
   font-size: var(--text-sm);
   color: var(--text-primary);
@@ -1894,8 +1926,9 @@ input, textarea, select {
 .form-input::placeholder, .form-textarea::placeholder { color: var(--text-muted); }
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 82, 255, 0.10);
+  outline: none;
 }
 
 .form-select { cursor: pointer; appearance: none; }
