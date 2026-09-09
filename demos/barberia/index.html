@@ -16,11 +16,11 @@
                 extend: {
                     colors: {
                         bb: {
-                            900: '#0a0a0a',
-                            800: '#141414',
-                            700: '#212121',
-                            accent: '#ffffff', // Using stark white as main accent for a very modern, monochromatic premium look
-                            secondary: '#8a8a8a'
+                            900: '#121316',
+                            800: '#18191c',
+                            700: '#22252a',
+                            accent: '#d4af37', // Gold/amber accent
+                            secondary: '#a1a1aa' // Light gray
                         }
                     },
                     fontFamily: {
@@ -39,13 +39,15 @@
     class="bg-bb-900 text-gray-200 font-montserrat antialiased overflow-x-hidden selection:bg-white selection:text-black">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 transition-all duration-300 py-6 px-6 md:px-12 bg-bb-900/80 backdrop-blur-md border-b border-white/5"
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 py-6 px-6 md:px-12"
+        style="background: rgba(18, 19, 22, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.06);"
         id="navbar">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <!-- Logo -->
             <a href="#"
-                class="font-oswald text-2xl md:text-3xl font-bold tracking-widest text-white uppercase flex items-center gap-2">
-                <i class="ph-fill ph-scissors text-3xl"></i>
+                class="font-oswald text-2xl md:text-3xl font-bold tracking-widest text-[#f4f4f5] uppercase flex items-center gap-2">
+                <i class="ph-fill ph-scissors text-3xl text-bb-accent"></i>
                 Black<span class="text-bb-secondary font-light">Barber</span>
             </a>
 
@@ -57,7 +59,7 @@
                 <a href="#galeria" class="hover:text-white transition-colors text-bb-secondary">Galería</a>
                 <a href="#contacto" class="hover:text-white transition-colors text-bb-secondary">Contacto</a>
                 <a href="#reserva"
-                    class="bg-white text-black px-6 py-3 hover:bg-gray-200 transition-colors duration-300 font-bold">Reservar</a>
+                    class="bg-bb-accent text-[#121316] px-6 py-3 border border-bb-accent hover:bg-transparent hover:text-bb-accent transition-all duration-300 font-bold">Reservar</a>
             </div>
 
             <!-- Mobile Toggle -->
@@ -78,7 +80,7 @@
         <a href="#barberos" class="mobile-link text-white hover:text-gray-400">Barberos</a>
         <a href="#galeria" class="mobile-link text-white hover:text-gray-400">Galería</a>
         <a href="#contacto" class="mobile-link text-white hover:text-gray-400">Contacto</a>
-        <a href="#reserva" class="mobile-link mt-4 bg-white text-black px-8 py-4 font-bold text-lg">Reservar Cita</a>
+        <a href="#reserva" class="mobile-link mt-4 bg-bb-accent text-[#121316] px-8 py-4 font-bold text-lg border border-bb-accent hover:bg-transparent hover:text-bb-accent transition-all">Reservar Cita</a>
     </div>
 
     <!-- Hero Section -->
@@ -101,10 +103,10 @@
             </p>
             <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto reveal delay-300">
                 <a href="#reserva"
-                    class="bg-white text-black font-oswald uppercase tracking-widest font-bold px-10 py-4 hover:bg-gray-200 transition-colors w-full sm:w-auto text-center">Reservar
+                    class="bg-bb-accent text-[#121316] font-oswald uppercase tracking-widest font-bold px-10 py-4 border border-bb-accent hover:bg-transparent hover:text-bb-accent transition-all duration-300 w-full sm:w-auto text-center">Reservar
                     Cita</a>
                 <a href="#servicios"
-                    class="border border-white/30 text-white font-oswald uppercase tracking-widest font-bold px-10 py-4 hover:bg-white hover:text-black transition-colors w-full sm:w-auto text-center backdrop-blur-sm">Ver
+                    class="border border-white/30 text-[#f4f4f5] font-oswald uppercase tracking-widest font-bold px-10 py-4 hover:border-bb-accent hover:text-bb-accent transition-all duration-300 w-full sm:w-auto text-center backdrop-blur-sm">Ver
                     Servicios</a>
             </div>
         </div>
@@ -122,82 +124,72 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 reveal delay-100">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal delay-100">
                 <!-- Service 1 -->
-                <div
-                    class="group border-b border-white/10 pb-6 flex justify-between items-center hover:border-white transition-colors cursor-pointer">
+                <div class="group bg-[#1e2024] border border-white/5 rounded-[12px] p-7 hover:-translate-y-1 hover:border-bb-accent/50 hover:shadow-[0_10px_25px_rgba(0,0,0,0.4)] transition-all duration-300 cursor-pointer flex flex-col justify-between">
                     <div>
-                        <h3
-                            class="font-oswald text-2xl text-white uppercase tracking-wide mb-1 group-hover:pl-2 transition-all duration-300">
-                            Corte Clásico</h3>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-oswald text-2xl text-[#f4f4f5] uppercase tracking-wide group-hover:text-bb-accent transition-colors">Corte Clásico</h3>
+                            <div class="text-2xl font-oswald text-bb-accent font-semibold">S/ 40</div>
+                        </div>
                         <p class="text-bb-secondary font-light text-sm">Tijera o máquina, lavado y peinado. (45 min)</p>
                     </div>
-                    <div class="text-2xl font-oswald text-white">S/ 40</div>
                 </div>
 
                 <!-- Service 2 -->
-                <div
-                    class="group border-b border-white/10 pb-6 flex justify-between items-center hover:border-white transition-colors cursor-pointer">
+                <div class="group bg-[#1e2024] border border-white/5 rounded-[12px] p-7 hover:-translate-y-1 hover:border-bb-accent/50 hover:shadow-[0_10px_25px_rgba(0,0,0,0.4)] transition-all duration-300 cursor-pointer flex flex-col justify-between">
                     <div>
-                        <h3
-                            class="font-oswald text-2xl text-white uppercase tracking-wide mb-1 group-hover:pl-2 transition-all duration-300">
-                            Fade / Degradado</h3>
-                        <p class="text-bb-secondary font-light text-sm">Degradado perfecto desde cero, perfilado. (45
-                            min)</p>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-oswald text-2xl text-[#f4f4f5] uppercase tracking-wide group-hover:text-bb-accent transition-colors">Fade / Degradado</h3>
+                            <div class="text-2xl font-oswald text-bb-accent font-semibold">S/ 45</div>
+                        </div>
+                        <p class="text-bb-secondary font-light text-sm">Degradado perfecto desde cero, perfilado. (45 min)</p>
                     </div>
-                    <div class="text-2xl font-oswald text-white">S/ 45</div>
                 </div>
 
                 <!-- Service 3 -->
-                <div
-                    class="group border-b border-white/10 pb-6 flex justify-between items-center hover:border-white transition-colors cursor-pointer">
+                <div class="group bg-[#22252a] border border-bb-accent/30 rounded-[12px] p-7 hover:-translate-y-1 hover:border-bb-accent hover:shadow-[0_10px_25px_rgba(0,0,0,0.4)] transition-all duration-300 cursor-pointer flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-bb-accent text-[#121316] text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-bl-lg">Recomendado</div>
                     <div>
-                        <h3
-                            class="font-oswald text-2xl text-white uppercase tracking-wide mb-1 group-hover:pl-2 transition-all duration-300">
-                            Corte + Barba</h3>
-                        <p class="text-bb-secondary font-light text-sm">El servicio completo. Corte a elección y ritual
-                            de barba. (1h 15m)</p>
+                        <div class="flex justify-between items-start mb-4 mt-2">
+                            <h3 class="font-oswald text-2xl text-[#f4f4f5] uppercase tracking-wide group-hover:text-bb-accent transition-colors">Corte + Barba</h3>
+                            <div class="text-2xl font-oswald text-bb-accent font-semibold">S/ 70</div>
+                        </div>
+                        <p class="text-bb-secondary font-light text-sm">El servicio completo. Corte a elección y ritual de barba. (1h 15m)</p>
                     </div>
-                    <div class="text-2xl font-oswald text-white">S/ 70</div>
                 </div>
 
                 <!-- Service 4 -->
-                <div
-                    class="group border-b border-white/10 pb-6 flex justify-between items-center hover:border-white transition-colors cursor-pointer">
+                <div class="group bg-[#1e2024] border border-white/5 rounded-[12px] p-7 hover:-translate-y-1 hover:border-bb-accent/50 hover:shadow-[0_10px_25px_rgba(0,0,0,0.4)] transition-all duration-300 cursor-pointer flex flex-col justify-between">
                     <div>
-                        <h3
-                            class="font-oswald text-2xl text-white uppercase tracking-wide mb-1 group-hover:pl-2 transition-all duration-300">
-                            Ritual de Barba</h3>
-                        <p class="text-bb-secondary font-light text-sm">Toalla caliente, aceite, perfilado y masaje. (30
-                            min)</p>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-oswald text-2xl text-[#f4f4f5] uppercase tracking-wide group-hover:text-bb-accent transition-colors">Ritual de Barba</h3>
+                            <div class="text-2xl font-oswald text-bb-accent font-semibold">S/ 35</div>
+                        </div>
+                        <p class="text-bb-secondary font-light text-sm">Toalla caliente, aceite, perfilado y masaje. (30 min)</p>
                     </div>
-                    <div class="text-2xl font-oswald text-white">S/ 35</div>
                 </div>
 
                 <!-- Service 5 -->
-                <div
-                    class="group border-b border-white/10 pb-6 flex justify-between items-center hover:border-white transition-colors cursor-pointer">
+                <div class="group bg-[#1e2024] border border-white/5 rounded-[12px] p-7 hover:-translate-y-1 hover:border-bb-accent/50 hover:shadow-[0_10px_25px_rgba(0,0,0,0.4)] transition-all duration-300 cursor-pointer flex flex-col justify-between">
                     <div>
-                        <h3
-                            class="font-oswald text-2xl text-white uppercase tracking-wide mb-1 group-hover:pl-2 transition-all duration-300">
-                            Diseño Personalizado</h3>
-                        <p class="text-bb-secondary font-light text-sm">Líneas, tribales o diseños a medida. (30 min+)
-                        </p>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-oswald text-2xl text-[#f4f4f5] uppercase tracking-wide group-hover:text-bb-accent transition-colors">Diseño Personal.</h3>
+                            <div class="text-2xl font-oswald text-bb-accent font-semibold">S/ 25+</div>
+                        </div>
+                        <p class="text-bb-secondary font-light text-sm">Líneas, tribales o diseños a medida. (30 min+)</p>
                     </div>
-                    <div class="text-2xl font-oswald text-white">S/ 25+</div>
                 </div>
 
                 <!-- Service 6 -->
-                <div
-                    class="group border-b border-white/10 pb-6 flex justify-between items-center hover:border-white transition-colors cursor-pointer">
+                <div class="group bg-[#1e2024] border border-white/5 rounded-[12px] p-7 hover:-translate-y-1 hover:border-bb-accent/50 hover:shadow-[0_10px_25px_rgba(0,0,0,0.4)] transition-all duration-300 cursor-pointer flex flex-col justify-between">
                     <div>
-                        <h3
-                            class="font-oswald text-2xl text-white uppercase tracking-wide mb-1 group-hover:pl-2 transition-all duration-300">
-                            Limpieza Facial</h3>
-                        <p class="text-bb-secondary font-light text-sm">Exfoliación, mascarilla negra y crema
-                            hidratante. (30 min)</p>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-oswald text-2xl text-[#f4f4f5] uppercase tracking-wide group-hover:text-bb-accent transition-colors">Limpieza Facial</h3>
+                            <div class="text-2xl font-oswald text-bb-accent font-semibold">S/ 50</div>
+                        </div>
+                        <p class="text-bb-secondary font-light text-sm">Exfoliación, mascarilla negra y crema hidratante. (30 min)</p>
                     </div>
-                    <div class="text-2xl font-oswald text-white">S/ 50</div>
                 </div>
             </div>
         </div>
