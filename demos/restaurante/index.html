@@ -1206,6 +1206,22 @@
         animation: none;
       }
     }
+    /* Mobile Optimizations (Added as requested) */
+    @media (max-width: 768px) {
+      html, body { overflow-x: hidden; width: 100%; box-sizing: border-box; }
+      * { box-sizing: border-box; }
+      .presentacion-top, .dish-grid, .menu-grid { grid-template-columns: 1fr !important; }
+      .features { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 3.5rem !important; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.8rem !important; }
+      .presentacion h2, .platos h2, .menu-head h2 { font-size: 2.2rem !important; }
+      .btn { width: 100%; justify-content: center; }
+      .container { padding: 0 15px; }
+      .hero-bottom-row, .hero-meta { flex-direction: column; align-items: flex-start; }
+      .dish-body { padding: 15px; }
+    }
   </style>
 </head>
 

@@ -793,6 +793,22 @@
     .hero-actions{ flex-direction:column; align-items:flex-start; }
     .foot-grid{ grid-template-columns:1fr; }
   }
+  /* Mobile Optimizations (Added as requested) */
+  @media (max-width: 768px) {
+    html, body { overflow-x: hidden; width: 100%; box-sizing: border-box; }
+    * { box-sizing: border-box; }
+    .hero h1 { font-size: 3.5rem !important; }
+    .planes-grid { grid-template-columns: 1fr; }
+    .bento { grid-template-columns: 1fr; grid-template-rows: auto; }
+    .bento-item { min-height: 200px; grid-column: auto !important; grid-row: auto !important; }
+    .loc-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 2.5rem !important; }
+    .section-head h2 { font-size: 2rem !important; }
+    .btn { width: 100%; text-align: center; justify-content: center; }
+    .wrap { padding: 0 15px; }
+  }
 </style>
 </head>
 <body>

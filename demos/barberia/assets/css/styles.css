@@ -69,3 +69,7 @@ input:focus, select:focus {
 .delay-100 { transition-delay: 100ms; }
 .delay-200 { transition-delay: 200ms; }
 .delay-300 { transition-delay: 300ms; }
+
+/* Mobile Optimizations (Added as requested) */
+@media (max-width: 768px) { html, body { overflow-x: hidden; width: 100%; box-sizing: border-box; } * { box-sizing: border-box; } }
+@media (max-width: 480px) { h1 { font-size: 3rem !important; line-height: 1 !important; } h2 { font-size: 2.2rem !important; } .px-6, .px-12, .p-8 { padding-left: 1.25rem !important; padding-right: 1.25rem !important; } .grid { grid-template-columns: 1fr !important; } .btn { width: 100%; text-align: center; } }
