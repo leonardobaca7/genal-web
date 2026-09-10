@@ -1120,66 +1120,6 @@
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════
-     TESTIMONIOS
-════════════════════════════════════════════════════════════ -->
-    <section class="testimonials-section section" aria-labelledby="testimonials-title">
-      <div class="container">
-
-        <div style="text-align:center; max-width:560px; margin:0 auto">
-          <div class="section-label reveal">Testimonios</div>
-          <h2 class="section-title display-text reveal reveal-delay-1" id="testimonials-title">
-            Lo que nuestros clientes<br>dirán de GENAL.
-          </h2>
-          <p class="section-subtitle reveal reveal-delay-2" style="margin:0 auto">
-            Estos espacios están reservados para las experiencias de quienes confíen en nosotros.
-          </p>
-        </div>
-
-        <div class="testimonials-grid">
-
-          <div class="testimonial-card reveal">
-            <div class="testimonial-placeholder-icon" aria-hidden="true">👤</div>
-            <div class="testimonial-stars" aria-hidden="true">
-              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                class="star">★</span><span class="star">★</span>
-            </div>
-            <p class="testimonial-quote">"Tu testimonio podría estar aquí. Estamos construyendo algo grande y nos
-              encantaría que formes parte."</p>
-            <div class="testimonial-placeholder-text">
-              <span aria-hidden="true">⏳</span> Próximamente
-            </div>
-          </div>
-
-          <div class="testimonial-card reveal reveal-delay-1">
-            <div class="testimonial-placeholder-icon" aria-hidden="true">👤</div>
-            <div class="testimonial-stars" aria-hidden="true">
-              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                class="star">★</span><span class="star">★</span>
-            </div>
-            <p class="testimonial-quote">"Sé el primero en compartir tu experiencia trabajando con GENAL. Tu negocio
-              merece una web así."</p>
-            <div class="testimonial-placeholder-text">
-              <span aria-hidden="true">⏳</span> Próximamente
-            </div>
-          </div>
-
-          <div class="testimonial-card reveal reveal-delay-2">
-            <div class="testimonial-placeholder-icon" aria-hidden="true">👤</div>
-            <div class="testimonial-stars" aria-hidden="true">
-              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                class="star">★</span><span class="star">★</span>
-            </div>
-            <p class="testimonial-quote">"Este espacio te espera. Cuéntanos sobre tu negocio y construyamos algo
-              increíble juntos."</p>
-            <div class="testimonial-placeholder-text">
-              <span aria-hidden="true">⏳</span> Próximamente
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
 
     <!-- ═══════════════════════════════════════════════════════════
      FAQ
@@ -1521,16 +1461,34 @@
   </footer>
 
   <!-- ═══════════════════════════════════════════════════════════
-     WHATSAPP FLOATING BUTTON
+     FLOATING BUTTONS (WhatsApp + Gmail)
 ════════════════════════════════════════════════════════════ -->
-  <div class="whatsapp-float" aria-label="Contactar por WhatsApp">
-    <a href="https://wa.me/51995881713?text=Hola%20GENAL%2C%20estoy%20interesado%20en%20crear%20una%20p%C3%A1gina%20web%20para%20mi%20negocio."
-      class="whatsapp-bubble" id="whatsapp-float-btn" target="_blank" rel="noopener noreferrer"
-      aria-label="Abrir WhatsApp — ¿Hablamos de tu proyecto?">
-      <span aria-hidden="true">💬</span>
-      <div class="whatsapp-pulse" aria-hidden="true"></div>
-    </a>
-    <div class="whatsapp-tooltip" aria-hidden="true">¿Hablamos de tu proyecto?</div>
+  <div class="floating-buttons" aria-label="Botones de contacto flotantes">
+
+    <!-- Gmail Floating Button -->
+    <div class="gmail-float" aria-label="Contactar por Gmail">
+      <a href="mailto:genalwebdesign@gmail.com"
+        class="gmail-bubble" id="gmail-float-btn"
+        aria-label="Enviar correo a GENAL">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+        </svg>
+        <div class="gmail-pulse" aria-hidden="true"></div>
+      </a>
+      <div class="gmail-tooltip" aria-hidden="true">Escríbenos un correo</div>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float" aria-label="Contactar por WhatsApp">
+      <a href="https://wa.me/51995881713?text=Hola%20GENAL%2C%20estoy%20interesado%20en%20crear%20una%20p%C3%A1gina%20web%20para%20mi%20negocio."
+        class="whatsapp-bubble" id="whatsapp-float-btn" target="_blank" rel="noopener noreferrer"
+        aria-label="Abrir WhatsApp — ¿Hablamos de tu proyecto?">
+        <span aria-hidden="true">💬</span>
+        <div class="whatsapp-pulse" aria-hidden="true"></div>
+      </a>
+      <div class="whatsapp-tooltip" aria-hidden="true">¿Hablamos de tu proyecto?</div>
+    </div>
+
   </div>
 
   <script src="main.js"></script>
